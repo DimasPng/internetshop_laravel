@@ -30,4 +30,9 @@ Route::prefix('admin')->group(function () {
        Route::delete('/categories/{category}', App\Http\Controllers\Admin\Categories\DestroyController::class)->name('categories.destroy');
    });
 
+   Route::prefix('products')->group(function () {
+      Route::get('/', App\Http\Controllers\Admin\Products\IndexController::class)->name('products.index');
+
+   });
+
 });
