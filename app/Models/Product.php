@@ -11,7 +11,7 @@ class Product extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'product';
+    protected $table = 'products';
     protected $guarded = false;
 
     public function category() {

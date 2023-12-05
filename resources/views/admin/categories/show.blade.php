@@ -15,11 +15,11 @@
         </tbody>
     </table>
     <div class="flex">
-        <a href={{route('categories.edit', $category->id )}} class="btn btn-primary">Редактировать категорию</a>
+        <a href="{{route('categories.edit', $category->id )}}" class="btn btn-primary">Редактировать категорию</a>
         <button type="button" href="" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">
             Удалить категорию
         </button>
-        <a href={{route('categories.index')}} class="btn btn-warning">Назад</a>
+        <a href="{{route('categories.index')}}" class="btn btn-warning">Назад</a>
     </div>
 
     <!-- Модальное окно подтверждения удаления -->
@@ -38,7 +38,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-                    <form action={{route('categories.destroy', $category->id)}} method="post">
+                    <form action="{{route('categories.destroy', $category->id)}}" method="post">
                         @csrf
                         @method('delete')
                         <button class="btn btn-danger">Удалить</button>

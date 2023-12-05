@@ -22,7 +22,7 @@ class StoreRequest extends FormRequest
     public function rules($id = null): array
     {
         return [
-            'name'=>'required|unique:categories,name,' . $id,
+            'name'=>'required|unique:categories,name|min:3' . $id,
         ];
     }
 
@@ -31,6 +31,7 @@ class StoreRequest extends FormRequest
         return [
             'name.required' => 'Пожалуйста, введите название категории.',
             'name.unique' => 'Категория с таким названием уже существует.',
+            'name.min' => 'Название категории должно быть больше 3х симоволов'
         ];
     }
 }

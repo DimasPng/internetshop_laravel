@@ -25,4 +25,14 @@ class UpdateRequest extends FormRequest
             'name'=>'required|unique:categories,name,',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Пожалуйста, введите название категории.',
+            'name.unique' => 'Переименуйте категорию, чтобы сохранить изменения.',
+            'name.min' => 'Название категории должно быть больше 3х симоволов'
+        ];
+    }
+
 }

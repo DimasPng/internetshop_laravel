@@ -1,6 +1,6 @@
 @extends('layouts.admin.index')
 @section('content')
-    <form method="post" action={{route('categories.update', $category->id)}}>
+    <form method="post" action="{{route('categories.update', $category->id)}}">
         @csrf
         @method('patch')
         <div class="mb-3">
@@ -15,7 +15,7 @@
         </div>
         <div class="flex">
             <button type="submit" class="btn btn-warning">Изменить категорию</button>
-            <a href={{route('categories.index')}} class="btn btn-primary">Назад</a>
+            <a href="{{route('categories.index')}}" class="btn btn-primary">Назад</a>
         </div>
     </form>
 @endsection

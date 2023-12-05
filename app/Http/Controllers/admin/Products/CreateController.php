@@ -4,14 +4,12 @@ namespace App\Http\Controllers\Admin\Products;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Models\Product;
 
-class IndexController extends Controller
+class CreateController extends Controller
 {
     public function __invoke()
     {
         $categories = Category::all();
-        $products = Product::all();
-        return view('admin.products.index', compact('products', 'categories'));
+        return view('admin.products.create', compact('categories'));
     }
 }

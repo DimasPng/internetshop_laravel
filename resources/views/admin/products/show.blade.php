@@ -12,19 +12,14 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($products as $product)
             <tr>
                 <th scope="row">{{$product->id}}</th>
-                <td><a href="{{route('products.show', $product->id)}}">{{$product->title}}</a></td>
+                <td>{{$product->title}}</td>
                 <td>{{$product->price}}грн.</td>
                 <td>{{$product->quantity}}</td>
                 <td>{{$product->is_published === 1 ? "Включен" : "Отключен"}}</td>
-                @foreach($categories as $category)
-                    <td>{{$product->category_id === $category->id ? $category->name : ""}}</td>
-                @endforeach
+                <td>{{$product->category_id}}</td>
             </tr>
-        @endforeach
         </tbody>
     </table>
-    <a href="{{route('products.create')}}" class="btn btn-primary">Добавить товар</a>
 @endsection
