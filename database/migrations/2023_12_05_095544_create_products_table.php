@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->text('description');
-            $table->string('images');
+            $table->json('images')->nullable();
             $table->integer('price');
             $table->integer('quantity');
             $table->boolean('is_published')->default(true);

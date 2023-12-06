@@ -41,10 +41,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
-            </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Contact</a>
+                <a href="{{route('admin.index')}}" class="nav-link">Home</a>
             </li>
         </ul>
 
@@ -166,12 +163,6 @@
                     <i class="fas fa-expand-arrows-alt"></i>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#"
-                   role="button">
-                    <i class="fas fa-th-large"></i>
-                </a>
-            </li>
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -241,7 +232,7 @@
         <strong>Copyright &copy; 2014-{{now()->year}} <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.2.0
+            <b>Version</b> 1.0.5
         </div>
     </footer>
 

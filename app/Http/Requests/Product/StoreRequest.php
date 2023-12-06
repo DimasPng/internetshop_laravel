@@ -26,7 +26,8 @@ class StoreRequest extends FormRequest
             'description'=>'required|string|min:10',
             'price'=>'required|integer',
             'quantity'=>'required|integer',
-            'images'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'images'=>'required|array|max:20',
+            'images.*'=>'image|mimes:jpeg,png,jpg,gif|max:2048',
             'category_id'=>'exists:categories,id',
             'is_published'=>''
         ];
@@ -43,7 +44,7 @@ class StoreRequest extends FormRequest
             'price.required' => 'Это поле обязательно для заполнения',
             'quantity.required' => 'Это поле обязательно для заполнения',
             'images.required' => 'Добавьте изображение товара',
-            'images.max' => 'Изображение слишком большое. Максимум 2048кб.'
+            'images.max' => 'Не более 20 изображений. Максимальный вес файла 2048кб.'
         ];
     }
 

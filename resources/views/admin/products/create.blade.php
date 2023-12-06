@@ -36,8 +36,8 @@
             @enderror
         </div>
         <div class="mb-3 col-3">
-            <label for="formFileLg" class="form-label">Выберите изображения товара</label>
-            <input name="images" class="form-control form-control-lg" id="formFileLg" type="file">
+            <label for="formFileMultiple" class="form-label">Выберите изображения товара</label>
+            <input name="images[]" class="form-control form-control-lg" id="formFileMultiple" type="file" multiple>
             @error('images')
             <p class="text-danger">{{$message}}</p>
             @enderror
