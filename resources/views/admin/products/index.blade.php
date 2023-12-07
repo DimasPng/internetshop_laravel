@@ -19,9 +19,9 @@
                 <td>{{$product->price}}грн.</td>
                 <td>{{$product->quantity}}</td>
                 <td>{{$product->is_published === 1 ? "Включен" : "Отключен"}}</td>
-                @foreach($categories as $category)
-                    <td>{{$product->category_id === $category->id ? $category->name : ""}}</td>
-                @endforeach
+                <td> @foreach($categories as $category)
+                        {{$product->category_id === $category->id ? $category->name : ""}}
+                    @endforeach</td>
             </tr>
         @endforeach
         </tbody>

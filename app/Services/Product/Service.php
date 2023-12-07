@@ -21,4 +21,23 @@ class Service
 
         Product::create($data);
     }
+
+    public function update($request, $data, $product) {
+
+        if ($request->hasFile('images')) {
+            $images = json_decode($product->images);
+
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('images', 'public');
+                $images[] = $path;
+            }
+            $data['images'] = json_encode($images);
+        }
+
+        $data['is_published'] = $request->input('is_published') ? 1 : 0;
+
+        $product->update($data);
+
+        return redirect(route('products.index'));
+    }
 }

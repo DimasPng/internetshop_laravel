@@ -28,6 +28,7 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset("assets/plugins/summernote/summernote-bs4.min.css") }}">
     <!-- Add TinyMCE -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <x-head.tinymce-config/>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">

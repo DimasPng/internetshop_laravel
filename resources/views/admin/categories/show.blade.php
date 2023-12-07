@@ -16,7 +16,7 @@
     </table>
     <div class="flex">
         <a href="{{route('categories.edit', $category->id )}}" class="btn btn-primary">Редактировать категорию</a>
-        <button type="button" href="" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">
             Удалить категорию
         </button>
         <a href="{{route('categories.index')}}" class="btn btn-warning">Назад</a>
@@ -34,7 +34,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Вы уверены, что хотите удалить категорию?
+                    Вы уверены, что хотите удалить категорию: {{$category->name}}?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
