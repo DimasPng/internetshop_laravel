@@ -1,6 +1,6 @@
 @extends('layouts.admin.index')
 @section('content')
-    <form method="post" action="{{route('categories.update', ['category' => $category->id])}}">
+    <form method="post" action="{{route('categories.update', $category->id)}}">
         @csrf
         @method('patch')
         <div class="mb-3">
