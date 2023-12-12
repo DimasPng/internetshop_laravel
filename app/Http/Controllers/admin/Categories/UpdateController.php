@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin\Categories;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\UpdateRequest;
 use App\Models\Category;
 
-class UpdateController extends Controller
+class UpdateController extends BaseController
 {
     public function __invoke(UpdateRequest $request, Category $category)
     {
         $data = $request->validated();
-        $category->update($data);
+        $this->service->update($request, $data, $category);
         return redirect(route('categories.index'));
     }
 }

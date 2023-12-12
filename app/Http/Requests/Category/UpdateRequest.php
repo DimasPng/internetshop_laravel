@@ -21,8 +21,14 @@ class UpdateRequest extends FormRequest
      */
     public function rules(): array
     {
+        $thisCategory = $this->route('category');
+
         return [
-            'name'=>'required|unique:categories,name,',
+            'name' => 'required|unique:categories,name,' . $thisCategory->id,
+            'uri_category' => [
+                'required', 'regex:/^[a-zA-Z0-9-_]/u', 'min:3'
+            ],
+            'top_category' => ''
         ];
     }
 
@@ -30,8 +36,11 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name.required' => 'Пожалуйста, введите название категории.',
-            'name.unique' => 'Переименуйте категорию, чтобы сохранить изменения.',
-            'name.min' => 'Название категории должно быть больше 3х симоволов'
+            'name.unique' => 'Название категории должно быть уникальным.',
+            'name.min' => 'Название категории должно быть больше 3х симоволов',
+            'uri_category.required' => 'Это обязательное поле.',
+            'uri_category.min' => 'URI должно быть больше 3х символов',
+            'uri_category.regex' => 'Только латынские буквы, цифры, тире - и нижнее подчеркивание _',
         ];
     }
 

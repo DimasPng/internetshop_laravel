@@ -1,6 +1,6 @@
 @extends('layouts.admin.index')
 @section('content')
-    <form method="post" action="{{route('categories.update', $category->id)}}">
+    <form method="post" action="{{route('categories.update', ['category' => $category->id])}}">
         @csrf
         @method('patch')
         <div class="mb-3">
@@ -10,6 +10,25 @@
                    value="{{$category->name}}"
             >
             @error('name')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="title" class="form-label">URI категории*</label>
+            <input name="uri_category" value="{{$category->uri_category}}" type="text" class="form-control form-control-lg"
+                   placeholder="Введите uri категории, латыницей"
+                   id="title" aria-describedby="addCategory">
+            @error('uri_category')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
+        </div>
+        <div class="mb-3 form-check form-switch">
+            <input type="hidden" name="top_category" value="0">
+            <input name="top_category" class="form-check-input" type="checkbox" role="switch"
+                   id="flexSwitchCheckChecked"
+                {{$category->top_category === 1 ? 'checked' : ''}} >
+            <label class="form-check-label" for="flexSwitchCheckChecked">Топ категория</label>
+            @error('top_category')
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>

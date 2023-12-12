@@ -23,6 +23,10 @@ class StoreRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:categories,name|min:3' . $id,
+            'uri_category' => [
+                'required', 'regex:/^[a-zA-Z0-9-_]/u', 'min:3'
+            ],
+            'top_category' => ''
         ];
     }
 
@@ -31,7 +35,10 @@ class StoreRequest extends FormRequest
         return [
             'name.required' => 'Пожалуйста, введите название категории.',
             'name.unique' => 'Категория с таким названием уже существует.',
-            'name.min' => 'Название категории должно быть больше 3х симоволов'
+            'name.min' => 'Название категории должно быть больше 3х символов',
+            'uri_category.required' => 'Это обязательное поле.',
+            'uri_category.min' => 'URI должно быть больше 3х символов',
+            'uri_category.regex' => 'Только латынские буквы, цифры, тире - и нижнее подчеркивание _',
         ];
     }
 }

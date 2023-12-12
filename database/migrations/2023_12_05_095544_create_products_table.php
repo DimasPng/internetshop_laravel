@@ -24,6 +24,8 @@ return new class extends Migration
             $table->foreign('category_id', 'product_category_fk')->on('categories')->references('id');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->unique(['category_id', 'title']);
         });
     }
 
