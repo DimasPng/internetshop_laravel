@@ -26,15 +26,18 @@ class UpdateRequest extends FormRequest
             'description' => 'required|string|min:10',
             'price' => 'required|integer',
             'quantity' => 'required|integer',
-            'hit'=>'',
             'images' => 'array|max:20',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'category_id' => 'exists:categories,id',
             'is_published' => '',
+            'hit'=>'',
+            'uri_product'=> [
+                'required', 'regex:/^[a-zA-Z0-9-_]/u', 'min:3'
+            ]
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'title.min' => 'Название товара должно быть больше 5 символов',
@@ -44,6 +47,9 @@ class UpdateRequest extends FormRequest
             'price.required' => 'Это поле обязательно для заполнения',
             'quantity.required' => 'Это поле обязательно для заполнения',
             'images.max' => 'Не более 20 изображений. Максимальный вес файла 2048кб.',
+            'uri_product.required' => 'Это обязательное поле.',
+            'uri_product.min' => 'URI должно быть больше 3х символов',
+            'uri_product.regex' => 'Только латынские буквы, цифры, тире - и нижнее подчеркивание _',
         ];
     }
 }

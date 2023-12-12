@@ -36,6 +36,14 @@
                     </div>
                 </div>
             </div>
+            <div class="flex flex-column mb-3">
+                <p class="font-weight-bold">URI товара</p>
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">{{$product->uri_product}}</p>
+                    </div>
+                </div>
+            </div>
             <a href="{{route('products.edit', $product->id)}}" class="btn btn-warning">Редактировать продукт</a>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">Удалить
                 продукт

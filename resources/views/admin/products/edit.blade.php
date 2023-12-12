@@ -40,6 +40,15 @@
             @enderror
         </div>
         <div class="mb-3 col-3">
+            <label for="exampleInputEmail1" class="form-label">Укажите uri товара</label>
+            <input value="{{old('uri_product') ?? $product->uri_product}}" name="uri_product" type="text" class="form-control form-control-lg"
+                   id="exampleInputEmail1"
+                   aria-describedby="emailHelp">
+            @error('uri_product')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
+        </div>
+        <div class="mb-3 col-3">
             <label for="formFileMultiple" class="form-label">Выберите изображения товара</label>
             <input name="images[]" class="form-control form-control-lg" id="formFileMultiple" type="file" multiple>
             @error('images')
