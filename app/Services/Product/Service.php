@@ -17,6 +17,7 @@ class Service
         }
 
         $data['images'] = json_encode($paths);
+        $data['hit'] = $request->input('hit') ? 1 : 0;
         $data['is_published'] = $request->input('is_published') ? 1 : 0;
 
         Product::create($data);
@@ -34,6 +35,7 @@ class Service
             $data['images'] = json_encode($images);
         }
 
+        $data['hit'] = $request->input('hit') ? 1 : 0;
         $data['is_published'] = $request->input('is_published') ? 1 : 0;
 
         $product->update($data);

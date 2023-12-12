@@ -70,14 +70,25 @@
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
-        <div class="mb-3 form-check form-switch">
-            <input type="hidden" name="is_published" value="0">
-            <input name="is_published" class="form-check-input" type="checkbox" role="switch"
-                   id="flexSwitchCheckChecked" {{$product->is_published === 1 ? 'checked' : ''}}>
-            <label class="form-check-label" for="flexSwitchCheckChecked">Товар включен</label>
-            @error('is_published')
-            <p class="text-danger">{{$message}}</p>
-            @enderror
+        <div class="d-flex mb-3">
+            <div class="mr-3 form-check form-switch">
+                <input type="hidden" name="is_published" value="0">
+                <input name="is_published" class="form-check-input" type="checkbox" role="switch"
+                       id="flexSwitchCheckChecked" {{$product->is_published === 1 ? 'checked' : ''}}>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Товар включен</label>
+                @error('is_published')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="form-check form-switch">
+                <input type="hidden" name="hit" value="0">
+                <input name="hit" class="form-check-input" type="checkbox" role="switch"
+                       id="flexSwitchCheckChecked" {{$product->hit === 1 ? 'checked' : ''}} >
+                <label class="form-check-label" for="flexSwitchCheckChecked">Хит продаж</label>
+                @error('hit')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+            </div>
         </div>
         <div class="d-flex flex-wrap">
             <button type="submit" class="btn btn-warning mr-2">Обновить товар</button>

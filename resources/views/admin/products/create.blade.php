@@ -21,7 +21,8 @@
         </div>
         <div class="mb-3 col-3">
             <label for="exampleInputEmail1" class="form-label">Укажите цену товара в гривне</label>
-            <input value="{{old('price')}}" name="price" type="text" class="form-control form-control-lg" id="exampleInputEmail1"
+            <input value="{{old('price')}}" name="price" type="text" class="form-control form-control-lg"
+                   id="exampleInputEmail1"
                    aria-describedby="emailHelp">
             @error('price')
             <p class="text-danger">{{$message}}</p>
@@ -29,7 +30,8 @@
         </div>
         <div class="mb-3 col-3">
             <label for="exampleInputEmail1" class="form-label">Укажите количество товара</label>
-            <input value="{{old('quantity')}}" name="quantity" type="text" class="form-control form-control-lg" id="exampleInputEmail1"
+            <input value="{{old('quantity')}}" name="quantity" type="text" class="form-control form-control-lg"
+                   id="exampleInputEmail1"
                    aria-describedby="emailHelp">
             @error('quantity')
             <p class="text-danger">{{$message}}</p>
@@ -54,15 +56,27 @@
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
-        <div class="mb-3 form-check form-switch">
-            <input type="hidden" name="is_published" value="0">
-            <input name="is_published" class="form-check-input" type="checkbox" role="switch"
-                   id="flexSwitchCheckChecked" checked>
-            <label class="form-check-label" for="flexSwitchCheckChecked">Товар включен</label>
-            @error('is_published')
-            <p class="text-danger">{{$message}}</p>
-            @enderror
+        <div class="d-flex mb-3">
+            <div class="mr-3 form-check form-switch">
+                <input type="hidden" name="is_published" value="0">
+                <input name="is_published" class="form-check-input" type="checkbox" role="switch"
+                       id="flexSwitchCheckChecked" checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Товар включен</label>
+                @error('is_published')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+            </div>
+            <div class="form-check form-switch">
+                <input type="hidden" name="hit" value="0">
+                <input name="hit" class="form-check-input" type="checkbox" role="switch"
+                       id="flexSwitchCheckChecked">
+                <label class="form-check-label" for="flexSwitchCheckChecked">Хит продаж</label>
+                @error('hit')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+            </div>
         </div>
+
         <button type="submit" class="btn btn-primary">Добавить товар</button>
     </form>
     <script>

@@ -8,6 +8,7 @@
                 <th scope="col">Название товара</th>
                 <th scope="col">Цена</th>
                 <th scope="col">Количество</th>
+                <th scope="col">Хит продаж</th>
                 <th scope="col">Статус товара</th>
                 <th scope="col">Категория товара</th>
             </tr>
@@ -18,6 +19,7 @@
                 <td>{{$product->title}}</td>
                 <td>{{$product->price}}грн.</td>
                 <td>{{$product->quantity}}</td>
+                <td>{{$product->hit === 1 ? '✓' : '-'}}</td>
                 <td>{{$product->is_published === 1 ? "Включен" : "Отключен"}}</td>
                 <td>@foreach($categories as $category)
                         {{$product->category_id === $category->id ? $category->name : ""}}

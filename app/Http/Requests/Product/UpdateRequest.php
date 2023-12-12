@@ -26,6 +26,7 @@ class UpdateRequest extends FormRequest
             'description' => 'required|string|min:10',
             'price' => 'required|integer',
             'quantity' => 'required|integer',
+            'hit'=>'',
             'images' => 'array|max:20',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'category_id' => 'exists:categories,id',
