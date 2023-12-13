@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRequest extends FormRequest
 {
@@ -19,12 +20,16 @@ class StoreRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules($id = null): array
+    public function rules(): array
     {
+        $categoryId = $this->route('category');
         return [
-            'name'=>'required|unique:categories,name|min:3' . $id,
+            'name'=>['required','min:3', 'string',
+                Rule::unique('categories', 'name')->ignore($categoryId)
+                ],
             'uri_category' => [
-                'required', 'regex:/^[a-zA-Z0-9-_]/u', 'min:3'
+                'required', 'regex:/^[a-z0-9-_]+$/u', 'min:3',
+                Rule::unique('categories', 'uri_category')->ignore($categoryId)
             ],
             'top_category' => ''
         ];
@@ -38,7 +43,8 @@ class StoreRequest extends FormRequest
             'name.min' => 'Название категории должно быть больше 3х символов',
             'uri_category.required' => 'Это обязательное поле.',
             'uri_category.min' => 'URI должно быть больше 3х символов',
-            'uri_category.regex' => 'Только латынские буквы, цифры, тире - и нижнее подчеркивание _',
+            'uri_category.regex' => 'Только латынские буквы в нижнем регистре, цифры, тире - и нижнее подчеркивание _',
+            'uri_category.unique' => 'URI категории с таким названием уже существует.',
         ];
     }
 }

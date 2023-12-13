@@ -5,6 +5,7 @@
         <tr>
             <th scope="col">ID категории</th>
             <th scope="col">Имя категории</th>
+            <th scope="col">URI категории</th>
             <th scope="col">Топ категория</th>
         </tr>
         </thead>
@@ -12,6 +13,7 @@
         <tr>
             <th scope="row">{{ $category->id  }}</th>
             <td>{{ $category->name }}</td>
+            <td>{{$category->uri_category}}</td>
             <td>{{ $category->top_category === 1 ? '✓' : '-' }}</td>
         </tr>
         </tbody>

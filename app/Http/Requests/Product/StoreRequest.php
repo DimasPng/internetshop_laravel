@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRequest extends FormRequest
 {
@@ -21,23 +22,27 @@ class StoreRequest extends FormRequest
      */
     public function rules(): array
     {
+        $productId = $this->route('product');
         return [
-            'title' => 'required|unique:products,title|string|min:5',
+            'title' => ['required', 'string', 'min:5',
+                Rule::unique('products', 'title')->ignore($productId)
+            ],
             'description' => 'required|string|min:10',
             'price' => 'required|integer',
             'quantity' => 'required|integer',
             'images' => 'required|array|max:20',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'category_id' => 'exists:categories,id',
-            'hit'=>'',
+            'hit' => '',
             'is_published' => '',
             'uri_product' => [
-                'required', 'regex:/^[a-zA-Z0-9-_]/u', 'min:3'
+                'required', 'regex:/^[a-z0-9-_]+$/u', 'min:3',
+                Rule::unique('products', 'uri_product')->ignore($productId)
             ]
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'title.unique' => 'Товар с таким названием уже существует',
@@ -50,8 +55,9 @@ class StoreRequest extends FormRequest
             'images.required' => 'Добавьте изображение товара',
             'images.max' => 'Не более 20 изображений. Максимальный вес файла 2048кб.',
             'uri_product.required' => 'Это обязательное поле.',
+            'uri.unique' => 'URI с таким названием уже существует',
             'uri_product.min' => 'URI должно быть больше 3х символов',
-            'uri_product.regex' => 'Только латынские буквы, цифры, тире - и нижнее подчеркивание _',
+            'uri_product.regex' => 'Только латынские буквы в нижнем регистре, цифры, тире - и нижнее подчеркивание _',
         ];
     }
 }
