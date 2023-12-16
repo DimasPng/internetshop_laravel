@@ -18,4 +18,11 @@ class Category extends Model
         return $this->hasMany(Product::class, 'category_id', 'id');
     }
 
+    public function getImageUrlAttribute()
+    {
+        $imageUrl = url('storage/' . $this->image);
+
+        return $imageUrl;
+    }
+
 }

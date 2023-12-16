@@ -18,6 +18,13 @@
         </tr>
         </tbody>
     </table>
+    <div class="col-md-3 mb-3">
+        <p class="font-weight-bold">Изображение категории</p>
+        <div class="d-flex flex-wrap">
+                <img src="{{ asset('storage/' . $category->image) }}" class="mr-2 mb-2 img-fluid"
+                     style="width: 150px; height: 150px;" alt="Изображение товара">
+        </div>
+    </div>
     <div class="flex">
         <a href="{{route('categories.edit', $category->id )}}" class="btn btn-primary">Редактировать категорию</a>
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">

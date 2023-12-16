@@ -1,6 +1,6 @@
 @extends('layouts.admin.index')
 @section('content')
-    <form method="post" action="{{route('categories.update', $category->id)}}">
+    <form method="post" action="{{route('categories.update', $category->id)}}" enctype="multipart/form-data">
         @csrf
         @method('patch')
         <div class="mb-3">
@@ -19,6 +19,13 @@
                    placeholder="Введите uri категории, латыницей"
                    id="title" aria-describedby="addCategory">
             @error('uri_category')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
+        </div>
+        <div class="mb-3 col-3">
+            <label for="formFileMultiple" class="form-label">Выберите изображение категории</label>
+            <input name="image" class="form-control form-control-lg" id="formFileMultiple" type="file">
+            @error('image')
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>

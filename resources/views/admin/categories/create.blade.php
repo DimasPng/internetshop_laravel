@@ -1,6 +1,6 @@
 @extends('layouts.admin.index')
 @section('content')
-    <form method="post" action="{{route('categories.store')}}">
+    <form method="post" action="{{route('categories.store')}}" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Название категории*</label>
@@ -15,6 +15,13 @@
             <input name="uri_category" value="{{old('uri_category')}}" type="text" class="form-control form-control-lg" placeholder="Введите uri категории, латыницей"
                    id="title" aria-describedby="addCategory">
             @error('uri_category')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
+        </div>
+        <div class="mb-3 col-3">
+            <label for="formFileMultiple" class="form-label">Выберите изображения категории</label>
+            <input name="image" class="form-control form-control-lg" id="formFileMultiple" type="file">
+            @error('image')
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>

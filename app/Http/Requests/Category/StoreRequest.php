@@ -31,6 +31,7 @@ class StoreRequest extends FormRequest
                 'required', 'regex:/^[a-z0-9-_]+$/u', 'min:3',
                 Rule::unique('categories', 'uri_category')->ignore($categoryId)
             ],
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'top_category' => ''
         ];
     }
@@ -45,6 +46,8 @@ class StoreRequest extends FormRequest
             'uri_category.min' => 'URI должно быть больше 3х символов',
             'uri_category.regex' => 'Только латынские буквы в нижнем регистре, цифры, тире - и нижнее подчеркивание _',
             'uri_category.unique' => 'URI категории с таким названием уже существует.',
+            'image.required' => 'Добавьте изображение товара',
+            'image.max' => 'Не более 20 изображений. Максимальный вес файла 2048кб.',
         ];
     }
 }
