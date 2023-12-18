@@ -15,14 +15,15 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('product_characteristic_id');
+            $table->text('value');
 
             $table->index('product_id', 'product_product_characteristics_product_idx');
             $table->index('product_characteristic_id', 'product_product_characteristics_product_characteristic_idx');
 
             $table->foreign('product_id', 'product_product_characteristics_product_fk')->on('products')->references('id');
             $table->foreign('product_characteristic_id', 'product_product_characteristics_product_characteristic_fk')->on('product_characteristics')->references('id');
-
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

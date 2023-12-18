@@ -1,7 +1,7 @@
 @extends('layouts.admin.index')
 @section('content')
     <div class="row">
-        <table class="table table-hover table-striped mt-3 mb-3">
+        <table class="table table-hover table-striped mb-3">
             <thead>
             <tr>
                 <th scope="col">ID</th>
@@ -28,22 +28,39 @@
             </tbody>
         </table>
         <div class="col-md-9 pr-3">
-            <div class="flex flex-column">
-                <p class="font-weight-bold">Описание товара</p>
-                <div class="card">
-                    <div class="card-body">
-                        <p class="card-text">{!! $product->description !!}</p>
-                    </div>
-                </div>
-            </div>
             <div class="flex flex-column mb-3">
-                <p class="font-weight-bold">URI товара</p>
+                <div class="mb-2 font-weight-bold">URI товара</div>
                 <div class="card">
                     <div class="card-body">
                         <p class="card-text">{{$product->uri_product}}</p>
                     </div>
                 </div>
             </div>
+            <div class="flex flex-column">
+                <div class="mb-2 font-weight-bold">Описание товара</div>
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">{!! $product->description !!}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-2 font-weight-bold">Характеристики товара</div>
+            <table class="table table-hover mb-3">
+                <thead>
+                <tr>
+                    <th scope="col">Характеристика</th>
+                    <th scope="col">Значение</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($characteristics as $characteristic)
+                    <tr>
+                        <td>{{$characteristic->characteristic_name}}</td>
+                        <td>{{$characteristic->pivot->value}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
             <a href="{{route('products.edit', $product->id)}}" class="btn btn-warning">Редактировать продукт</a>
             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">Удалить
                 продукт

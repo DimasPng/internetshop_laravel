@@ -14,7 +14,7 @@ class DestroyController extends Controller
         foreach (json_decode($product->images) as $image) {
             Storage::disk('public')->delete($image);
         }
-
+        $product->characteristics()->delete();
         $product->delete();
         return redirect(route('products.index'));
     }

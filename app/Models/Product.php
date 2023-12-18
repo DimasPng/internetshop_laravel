@@ -19,6 +19,14 @@ class Product extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+    public function characteristics()
+    {
+        return $this->belongsToMany(ProductCharacteristic::class, 'product_product_characteristics', 'product_id', 'product_characteristic_id')
+            ->withPivot('value')
+            ->withTimestamps();
+    }
+
+
     public function getImageUrlAttribute()
     {
         $images = [];

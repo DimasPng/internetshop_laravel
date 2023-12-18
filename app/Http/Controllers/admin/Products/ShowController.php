@@ -11,6 +11,7 @@ class ShowController extends Controller
     public function __invoke(Product $product)
     {
         $categories = Category::all();
-        return view('admin.products.show', compact('product', 'categories'));
+        $characteristics = $product->characteristics;
+        return view('admin.products.show', compact('product', 'categories', 'characteristics'));
     }
 }

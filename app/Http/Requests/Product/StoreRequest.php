@@ -34,6 +34,7 @@ class StoreRequest extends FormRequest
             'images.*' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'category_id' => 'exists:categories,id',
             'hit' => '',
+            'characteristics' =>'',
             'is_published' => '',
             'uri_product' => [
                 'required', 'regex:/^[a-z0-9-_]+$/u', 'min:3',

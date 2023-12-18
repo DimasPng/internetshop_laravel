@@ -40,6 +40,8 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::patch('/{product}', App\Http\Controllers\Admin\Products\UpdateController::class)->name('product.update');
         Route::post('/{product}/remove-image', App\Http\Controllers\Admin\Products\RemoveImageController::class)->name('products.removeImage');
         Route::delete('/{product}', App\Http\Controllers\Admin\Products\DestroyController::class)->name('products.destroy');
+
+        Route::post('/characteristic', App\Http\Controllers\Admin\Characteristics\StoreController::class)->name('characteristics.store');
     });
 
 });

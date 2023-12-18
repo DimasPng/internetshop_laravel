@@ -1,9 +1,9 @@
 @extends('layouts.admin.index')
 @section('content')
-    <form method="post" action="{{route('product.update', $product->id)}}" enctype="multipart/form-data">
+    <form method="post" action="{{route('product.update', $product->id)}}" enctype="multipart/form-data" id="productForm">
         @csrf
         @method('patch')
-        <div class="mb-3 col-8">
+        <div class="mb-3 col-9 p-0">
             <label for="exampleInputEmail1" class="form-label">Название товара</label>
             <input value="{{old('title') ?? $product->title}}" name="title" type="text"
                    class="form-control form-control-lg"
@@ -13,7 +13,7 @@
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
-        <div class="mb-3 col-8">
+        <div class="mb-3 col-9  p-0">
             <label for="exampleFormControlTextarea1" class="form-label">Описание товара</label>
             <textarea name="description" class="tinymce" id="exampleFormControlTextarea1"
                       rows="3">{{old('description') ?? $product->description}}</textarea>
@@ -21,6 +21,10 @@
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
+
+        @include('admin.products.components.characteristics-form')
+
+        <div class="d-flex border rounded col-9 p-3 mb-4 ">
         <div class="mb-3 col-3">
             <label for="exampleInputEmail1" class="form-label">Укажите цену товара в гривне</label>
             <input value="{{old('price') ?? $product->price}}" name="price" type="text"
@@ -41,30 +45,34 @@
         </div>
         <div class="mb-3 col-3">
             <label for="exampleInputEmail1" class="form-label">Укажите uri товара</label>
-            <input value="{{old('uri_product') ?? $product->uri_product}}" name="uri_product" type="text" class="form-control form-control-lg"
+            <input value="{{old('uri_product') ?? $product->uri_product}}" name="uri_product" type="text"
+                   class="form-control form-control-lg"
                    id="exampleInputEmail1"
                    aria-describedby="emailHelp">
             @error('uri_product')
             <p class="text-danger">{{$message}}</p>
             @enderror
         </div>
-        <div class="mb-3 col-3">
-            <label for="formFileMultiple" class="form-label">Выберите изображения товара</label>
-            <input name="images[]" class="form-control form-control-lg" id="formFileMultiple" type="file" multiple>
-            @error('images')
-            <p class="text-danger">{{$message}}</p>
-            @enderror
         </div>
-        <div class="mb-3 col-4">
-            <label for="existingImages" class="form-label">Существующие изображения</label>
-            <div id="existingImages" class="d-flex flex-wrap">
-                @foreach(json_decode($product->images) as $key => $image)
-                    <div class="existing-image mr-2 mb-2 d-flex flex-column" data-image-id="{{$key}}">
-                        <img src="{{ asset('storage/' . $image) }}" class="img-fluid"
-                             style="width: 150px; height: 150px;" alt="Изображение товара">
-                        <a type="button" class="btn btn-danger mt-2 remove-image">Удалить</a>
-                    </div>
-                @endforeach
+        <div class="d-flex border rounded col-9 p-3 mb-3">
+            <div class="mb-3 col-4">
+                <label for="existingImages" class="form-label">Существующие изображения</label>
+                <div id="existingImages" class="d-flex flex-wrap">
+                    @foreach(json_decode($product->images) as $key => $image)
+                        <div class="existing-image mr-2 mb-2 d-flex flex-column" data-image-id="{{$key}}">
+                            <img src="{{ asset('storage/' . $image) }}" class="img-fluid"
+                                 style="width: 150px; height: 150px;" alt="Изображение товара">
+                            <a type="button" class="btn btn-danger mt-2 remove-image">Удалить</a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="mb-3 col-3">
+                <label for="formFileMultiple" class="form-label">Выберите изображения товара</label>
+                <input name="images[]" class="form-control form-control-lg" id="formFileMultiple" type="file" multiple>
+                @error('images')
+                <p class="text-danger">{{$message}}</p>
+                @enderror
             </div>
         </div>
         <div class="mb-3 col-3">
@@ -104,13 +112,14 @@
             <a href="{{route('products.index')}}" class="btn btn-primary">Назад</a>
         </div>
     </form>
+
+    @include('admin.products.components.new-characteristic-modal')
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ asset('js/tinymce.js') }}"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            tinymce.init({
-                selector: 'textarea.tinymce',
-            });
-
             document.querySelectorAll('.remove-image').forEach(function (button) {
                 button.addEventListener('click', function (event) {
                     event.preventDefault();

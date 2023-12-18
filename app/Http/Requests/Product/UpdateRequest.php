@@ -35,6 +35,7 @@ class UpdateRequest extends FormRequest
             'category_id' => 'exists:categories,id',
             'is_published' => '',
             'hit' => '',
+            'characteristics' =>'',
             'uri_product' => [
                 'required', 'regex:/^[a-z0-9-_]+$/u', 'min:3',
                 Rule::unique('products', 'uri_product')->ignore($productId->id),

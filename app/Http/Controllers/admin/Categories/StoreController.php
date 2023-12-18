@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin\Categories;
 
 use App\Http\Requests\Category\StoreRequest;
-use App\Models\Category;
 
 class StoreController extends BaseController
 {

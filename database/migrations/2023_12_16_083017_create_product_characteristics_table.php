@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('product_characteristics', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('characteristic_name', 60);
+            $table->timestamps();
             $table->softDeletes();
         });
     }

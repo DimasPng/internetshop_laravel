@@ -28,6 +28,8 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset("assets/plugins/summernote/summernote-bs4.min.css") }}">
     <!-- Add TinyMCE -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <!-- Add Bootstrap -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <x-head.tinymce-config/>
 </head>
@@ -275,5 +277,7 @@
 <script src="{{ asset('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')  }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.js')  }}"></script>
+<!-- Bootstrap -->
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 </body>
 </html>
