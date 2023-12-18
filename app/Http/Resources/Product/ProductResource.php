@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Product;
 
 use App\Http\Resources\Category\CategoryResource;
+use App\Http\Resources\Product\Characteristic\CharacteristicResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -26,6 +27,7 @@ class ProductResource extends JsonResource
             'is_published' => $this->is_published,
             'uri_product' => $this->uri_product,
             'category' => new CategoryResource($this->category),
+            'characteristics' => CharacteristicResource::collection($this->characteristics)
         ];
     }
 }
