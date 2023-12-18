@@ -11,7 +11,7 @@ class IndexController extends Controller
     public function __invoke()
     {
         $categories = Category::all();
-        $products = Product::all();
+        $products = Product::paginate(20);
         return view('admin.products.index', compact('products', 'categories'));
     }
 }

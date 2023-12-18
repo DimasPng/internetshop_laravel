@@ -28,5 +28,8 @@
         @endforeach
         </tbody>
     </table>
+    <div>
+        {{$products->links()}}
+    </div>
     <a href="{{route('products.create')}}" class="btn btn-primary">Добавить товар</a>
 @endsection
