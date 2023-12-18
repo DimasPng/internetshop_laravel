@@ -73,7 +73,6 @@ class Service
             $product->characteristics()->sync($dataToSync);
 
 
-
         return redirect(route('products.index'));
     }
 }

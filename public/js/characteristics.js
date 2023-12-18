@@ -83,7 +83,7 @@ function clearInput(inputElement) {
 }
 
 function updateHiddenInput(savedCharacteristics) {
-    console.log('savedCharacteristics', savedCharacteristics)
+
     let input = document.getElementById('newCharacteristic');
 
     if (!input) {
@@ -100,24 +100,21 @@ function createHiddenInput() {
     input.id = 'newCharacteristic';
     input.type = 'hidden';
     input.name = 'characteristics';
-    console.log('input add')
     return input;
 }
 
 function removeRow(closestBtn) {
     const characteristicsId = getCharacteristicsIdMap(initialCharacteristics);
-    console.log(getCharacteristicsIdMap(initialCharacteristics))
+
     const rowToRemove = closestBtn.closest('tr');
     const characteristicName = rowToRemove.querySelector('td:first-child').textContent;
     const selectedCharacteristic = characteristicsId[characteristicName];
 
-    console.log(savedCharacteristics)
     const indexToRemove = savedCharacteristics.findIndex(item => {
-        console.log('item', item)
         const [charId] = item.split("|");
         return charId === selectedCharacteristic.toString();
     });
-    console.log(savedCharacteristics)
+
     if (indexToRemove !== -1) {
         savedCharacteristics.splice(indexToRemove, 1);
         rowToRemove.remove();
