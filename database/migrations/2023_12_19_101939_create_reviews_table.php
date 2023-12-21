@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->string('author_name');
+            $table->string('email');
             $table->text('comment');
+            $table->text('advantages')->nullable()->default(null);
+            $table->text('disadvantages')->nullable()->default(null);
             $table->integer('rating');
+            $table->boolean('recommend');
             $table->boolean('moderation_status')->default(false);
             $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');

@@ -18,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/test', App\Http\Controllers\Admin\Reviews\StoreController::class);
+
 Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/', App\Http\Controllers\Admin\IndexController::class)->name('admin.index');
 
@@ -43,7 +45,11 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
         Route::post('/characteristic', App\Http\Controllers\Admin\Characteristics\StoreController::class)->name('characteristics.store');
     });
+});
 
+Route::prefix('reviews')->group(function () {
+    Route::get('/', App\Http\Controllers\Admin\Reviews\IndexController::class)->name('reviews.index');
+    Route::post('/', App\Http\Controllers\Admin\Reviews\StoreController::class)->name('products.store');
 });
 
 Route::get('/dashboard', function () {

@@ -43,6 +43,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    protected $attributes = [
+        'role' => 'user',
+    ];
+
     public function isAdmin() {
         return $this->role === 'admin';
     }

@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <!-- Add Bootstrap -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @vite('resources/js/app.js')
     <x-head.tinymce-config/>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -220,6 +221,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('reviews.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Отзывы
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -279,5 +288,6 @@
 <script src="{{ asset('assets/dist/js/adminlte.js')  }}"></script>
 <!-- Bootstrap -->
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
 </body>
 </html>
