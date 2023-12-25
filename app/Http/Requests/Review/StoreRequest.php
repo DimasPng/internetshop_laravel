@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'comment' => 'required|string|min:8',
             'advantages' => 'nullable|string|min:5',
             'disadvantages' => 'nullable|string|min:5',
-            'rating' => 'nullable|integer|min:1|max:5',
+            'rating' => 'nullable|integer|min:0|max:5',
             'recommend' => 'nullable|in:on',
             'product_id' => 'required|exists:products,id'
         ];

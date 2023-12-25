@@ -5,8 +5,8 @@ namespace App\Services\Review;
 use App\Models\Product;
 use App\Models\Review;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
-use function Laravel\Prompts\error;
 
 class Service
 {
@@ -27,13 +27,12 @@ class Service
             }
 
             $data['user_id'] = $user->id;
-            $data['rating'] = $request->input('rating') ? 1 : 0;
             $data['recommend'] = $request->input('recommend') ? 1 : 0;
 
             Review::create($data);
 
-            return response()->json(['status'=>'ok'], 200);
         } catch (\Exception $e) {
+            Log::error($e->getMessage());
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }

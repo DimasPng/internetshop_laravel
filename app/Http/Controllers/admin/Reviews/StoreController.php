@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Reviews;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Review\StoreRequest;
-use App\Models\Product;
-use http\Env\Response;
-use Illuminate\Http\Request;
 
 class StoreController extends BaseController
 {
@@ -14,5 +10,6 @@ class StoreController extends BaseController
     {
         $data = $request->validated();
         $this->service->store($request, $data);
+        return response()->json(['status' => 'ok'], 200);
     }
 }

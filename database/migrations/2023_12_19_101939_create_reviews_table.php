@@ -25,6 +25,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->index('product_id', 'product_idx');
             $table->index('user_id', 'user_idx');
+            $table->integer('likes')->nullable()->default(null);
+            $table->integer('dislikes')->nullable()->default(null);
             $table->foreign('product_id', 'product_id_fk')->on('products')->references('id');
             $table->foreign('user_id', 'user_id_fk')->on('users')->references('id');
             $table->timestamps();
