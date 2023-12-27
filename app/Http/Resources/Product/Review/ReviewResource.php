@@ -22,6 +22,8 @@ class ReviewResource extends JsonResource
                 'disadvantages' => $this->disadvantages,
                 'rating' => $this->rating,
                 'recommend' => $this->recommend,
+                'likes' => $this->likes,
+                'dislikes' => $this->dislikes
             ];
     }
 }

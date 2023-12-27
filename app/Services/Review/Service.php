@@ -36,4 +36,23 @@ class Service
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+    public function storeLikes($request, $data)
+    {
+        try {
+            $review = Review::findOrFail($data['reviewId']);
+
+            if (!isset($data['likes']) || !isset($data['dislikes'])) {
+                return response()->json(['error' => 'Likes and dislikes must be provided']);
+            }
+
+            $review->likes = $data['likes'];
+            $review->dislikes = $data['dislikes'];
+            $review->save();
+
+        } catch(\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
 }

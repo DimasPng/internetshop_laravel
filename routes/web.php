@@ -49,7 +49,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 Route::prefix('reviews')->group(function () {
     Route::get('/', App\Http\Controllers\Admin\Reviews\IndexController::class)->name('reviews.index');
-    Route::post('/', App\Http\Controllers\Admin\Reviews\StoreController::class)->name('products.store');
+    Route::post('/', App\Http\Controllers\Admin\Reviews\StoreController::class)->name('reviews.store');
+    Route::post('/likes', [App\Http\Controllers\Admin\Reviews\StoreController::class, 'storeLikes'])->name('reviews.storeLikes');
+});
+
+Route::prefix('cart')->group(function () {
+    Route::post('/add', App\Http\Controllers\Admin\Cart\StoreController::class)->name('cart.store');
 });
 
 Route::get('/dashboard', function () {

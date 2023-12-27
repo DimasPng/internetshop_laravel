@@ -20,6 +20,7 @@ class Category extends Model
 
     public function getImageUrlAttribute()
     {
+
         $imageUrl = url('storage/' . $this->image);
 
         return $imageUrl;

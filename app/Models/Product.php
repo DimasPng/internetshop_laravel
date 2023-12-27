@@ -34,6 +34,7 @@ class Product extends Model
 
     public function getImageUrlAttribute()
     {
+
         $images = [];
 
         foreach (json_decode($this->images) as $image) {
