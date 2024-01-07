@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'reviews', 'reviews/likes'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', 'reviews', 'reviews/likes', 'cart/add'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [],
+    'allowed_origins' => ['*localhost*'],
 
     'allowed_origins_patterns' => ['*localhost*'],
 
@@ -29,6 +29,6 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
 ];

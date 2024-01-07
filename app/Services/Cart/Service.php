@@ -7,35 +7,30 @@ use Illuminate\Support\Facades\Auth;
 
 class Service
 {
-    public function store()
+    public function store($request, $data)
     {
-        $productId = request()->input('product_id');
-        $quantity = request()->input('quantity');
+        try {
+            $productId = $data['productId'];
+            $quantity = $data['quantity'];
 
-        $userId = Auth::id();
-        $sessionId = session()->getId();
+            //$userId = Auth::id();
+            $sessionId = $request->session()->getId();
 
-        $cart = Cart::where('product_id', $productId)
-            ->when($userId, function ($query) use ($userId) {
-                return $query->where('user_id', $userId);
-            }, function ($query) use ($sessionId) {
-                return $query->where('session_id', $sessionId);
-            })->first();
-
-        if ($cart) {
-            $cart->quantity += $quantity;
-            $cart->save();
-        } else {
-            Cart::create([
-                'product_id' => $productId,
-                'quantity' => $quantity,
-                'user_id' => $userId ?: null,
-                'session_id' => $userId ? null : $sessionId,
+            if ($cart = Cart::where(['session_id' => $sessionId, 'product_id' => $productId])->first()) {
+                $cart->quantity += $quantity;
+                $cart->save();
+            } else {
+                $cart = Cart::create([
+                    'product_id' => $productId,
+                    'quantity' => 1,
+                    'user_id' => null,
+                    'session_id' => $sessionId,
+                ]);
+            }
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Error',
             ]);
         }
-
-        return response()->json([
-            'message' => 'Success',
-        ]);
     }
 }
