@@ -38,13 +38,3 @@ services:
         restart: always
         ports:
             - "8102:80"
-    frontend:
-        build:
-            context: .
-            dockerfile: _docker/frontend/Dockerfile
-        volumes:
-            - ./:/var/www
-        container_name: project_frontend
-        ports:
-            - "3000:3000"
-            
