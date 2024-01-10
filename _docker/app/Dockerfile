@@ -48,7 +48,6 @@ RUN composer install \
       --no-plugins \
       --no-suggest \
       --no-scripts \
-      --no-autoloader \
       --prefer-dist
 
 
