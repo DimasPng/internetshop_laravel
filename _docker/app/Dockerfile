@@ -18,16 +18,7 @@ RUN apt-get update && apt-get install -y \
 COPY ./_docker/app/php.ini /usr/local/etc/php/conf.d/php.ini
 
 
-COPY app            /var/www/app
-COPY bootstrap      /var/www/bootstrap
-COPY config         /var/www/config
-COPY database       /var/www/database
-COPY public         /var/www/public
-COPY resources      /var/www/resources
-COPY routes         /var/www/routes
-COPY storage        /var/www/storage
-COPY artisan        /var/www/artisan
-COPY package.json   /var/www/package.json
+COPY . /var/www/
 
 
 COPY composer.*  ./
