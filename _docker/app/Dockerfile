@@ -51,6 +51,7 @@ RUN composer install \
       --prefer-dist
 
 RUN npm install
+RUN npm run dev
 
 RUN composer dump-autoload  --no-scripts --optimize && \
     chown -R root:www-data /var/www && \
@@ -59,5 +60,3 @@ RUN composer dump-autoload  --no-scripts --optimize && \
     chmod -R 775 /var/www/bootstrap/cache
 
 WORKDIR /var/www
-
-RUN npm run dev
