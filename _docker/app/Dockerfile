@@ -60,4 +60,4 @@ RUN composer dump-autoload  --no-scripts --optimize && \
 
 WORKDIR /var/www
 
-CMD ["npm", "run", "dev"]
+RUN npm run dev
