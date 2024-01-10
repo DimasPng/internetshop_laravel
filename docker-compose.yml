@@ -1,13 +1,13 @@
-version: '3'
+version: '3.8'
 
 services:
     nginx:
         image: nginx:latest
         volumes:
             - ./:/var/www
-            - ./_docker/nginx/conf.d:/etc/nginx/conf.d
+            - ./_docker/nginx/conf.d:/etc/nginx/conf.d:ro
         ports:
-            - "8876:80"
+            - "80:80"
         depends_on:
             - app
         container_name: project_nginx
@@ -38,3 +38,13 @@ services:
         restart: always
         ports:
             - "8102:80"
+    frontend:
+        build:
+            context: .
+            dockerfile: _docker/frontend/Dockerfile
+        volumes:
+            - ./:/var/www
+        container_name: project_frontend
+        ports:
+            - "3000:3000"
+            

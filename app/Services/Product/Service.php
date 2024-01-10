@@ -14,6 +14,8 @@ class Service
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $path = $image->store('images', 'public');
+                $absolutePath = storage_path('app/public/' . $path);
+                chmod($absolutePath, 0777); 
                 $paths[] = $path;
             }
         }
