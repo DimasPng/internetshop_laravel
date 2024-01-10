@@ -50,6 +50,8 @@ RUN composer install \
       --no-scripts \
       --prefer-dist
 
+RUN npm install
+RUN npm run dev
 
 RUN composer dump-autoload  --no-scripts --optimize && \
     chown -R root:www-data /var/www && \
