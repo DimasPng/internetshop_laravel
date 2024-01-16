@@ -108,7 +108,7 @@
             </div>
         </div>
         <div class="d-flex flex-wrap">
-            <button type="submit" class="btn btn-warning mr-2">Обновить товар</button>
+            <button type="submit" class="btn mr-2">Обновить товар</button>
             <a href="{{route('products.index')}}" class="btn btn-primary">Назад</a>
         </div>
     </form>

@@ -9,7 +9,7 @@
             @error('name')
             <p class="text-danger">{{$message}}</p>
             @enderror
-        </div>
+    </div>
         <div class="mb-3">
             <label for="title" class="form-label">URI категории*</label>
             <input name="uri_category" value="{{old('uri_category')}}" type="text" class="form-control form-control-lg" placeholder="Введите uri категории, латыницей"

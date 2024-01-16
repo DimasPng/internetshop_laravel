@@ -19,9 +19,9 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*5.35.91.65*'],
+    'allowed_origins' => ['*5.35.91.65*', '*localhost*'],
 
-    'allowed_origins_patterns' => ['*5.35.91.65*'],
+    'allowed_origins_patterns' => ['*5.35.91.65*', '*localhost*'],
 
     'allowed_headers' => ['*'],
 

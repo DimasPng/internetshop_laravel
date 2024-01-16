@@ -62,9 +62,9 @@
                 </tbody>
             </table>
             <a href="{{route('products.edit', $product->id)}}" class="btn btn-warning">Редактировать продукт</a>
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">Удалить
+            <a class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">Удалить
                 продукт
-            </button>
+            </a>
             <a href="{{route('products.index')}}" class="btn btn-primary">Назад</a>
         </div>
         <div class="col-md-3 mb-3">
@@ -91,7 +91,7 @@
                     Вы уверены, что хотите удалить товар: {{$product->title}}?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                    <a class="btn btn-secondary" data-dismiss="modal">Отмена</a>
                     <form action="{{route('products.destroy', $product->id)}}" method="post">
                         @csrf
                         @method('delete')

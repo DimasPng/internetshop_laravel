@@ -25,7 +25,7 @@
                      style="width: 150px; height: 150px;" alt="Изображение товара">
         </div>
     </div>
-    <div class="flex">
+    <div class="flex gap-1">
         <a href="{{route('categories.edit', $category->id )}}" class="btn btn-primary">Редактировать категорию</a>
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">
             Удалить категорию
@@ -33,7 +33,7 @@
         <a href="{{route('categories.index')}}" class="btn btn-warning">Назад</a>
     </div>
 
-    <!-- Модальное окно подтверждения удаления -->
+    <!-- Modal window -->
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog"
          aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
